@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <title>PTS</title>
+    <style>
+      :root {
+        --background-color: #ffefb1;
+        --frames-background-color: #a0a2f5;
+        --frames-background-two: #a59ed4;
+        --promotion-background: #c6d3db;
+        --review-color: rgb(255, 238, 0);
+        --info-section-border-color: rgb(190, 176, 176);
+        --button-background-color: #295feb;
+        --carousel-background-color: #e8f2fc;
+        --cone-one-color: #fecd00;
+        --cone-two-color: #3437a5;
+      }
+
+      *,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .header-container {
+        padding: 0 3rem;
+        margin-top: 5rem;
+      }
+
+      .frame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .childframe {
+        height: 364px;
+        width: 680px;
+        position: relative;
+        margin: -34px 26px 26px 26px;
+        background-color: #0b3768;
+        color: white;
+        border-radius: 10px;
+      }
+
+      button:hover {
+        background: white;
+        cursor: pointer;
+        color: #295feb;
+      }
+
+      img {
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        top: 0;
+        object-fit: contain;
+      }
+
+      .main {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        z-index: 0;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        padding: 2rem 0 2rem 0;
+
+        & h1,
+        p,
+        button {
+          margin: 1rem;
+        }
+      }
+
+      .get-started-button {
+        height: 39px;
+        width: 115px;
+        padding: 6px 6px 6px 6px;
+        background-color: yellow;
+        border-width: 0;
+        border-radius: 20px;
+      }
+
+      #chevron {
+        position: relative;
+        top: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #chevron:before {
+        content: "";
+        position: absolute;
+        margin-top: 8rem;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        background: var(--background-color);
+        transform: skew(0deg, 4deg);
+        border-bottom-right-radius: 2px;
+      }
+      #chevron:after {
+        content: "";
+        position: absolute;
+        margin-top: 8rem;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background: var(--background-color);
+        transform: skew(0deg, -4deg);
+        border-bottom-left-radius: 2px;
+      }
+
+      .content {
+        margin: 4rem 0;
+        text-align: center;
+
+        & h1 {
+          margin: 2rem 0;
+        }
+      }
+
+      .frames,
+      .more-about-btn-container,
+      .promotion-buttons-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .features {
+        width: 348px;
+        height: 335px;
+        background: var(--frames-background-color);
+        padding: 2rem;
+        display: grid;
+        align-content: space-between;
+        border-radius: 10px;
+        margin: 1rem;
+      }
+      .features img {
+        height: 24px;
+        width: 24px;
+      }
+
+      .frametwo {
+        background-color: var(--frames-background-two);
+      }
+
+      .arrow {
+        color: #fecd00;
+        margin-left: 8px;
+        font-size: 22px;
+        font-weight: 400;
+        cursor: pointer;
+      }
+
+      .more-about-btn-container {
+        margin: 4rem 0 0 0;
+      }
+      .more-about-platform {
+        width: 158px;
+        padding: 14px 0 14px 0;
+        text-align: center;
+        background-color: var(--button-background-color);
+        border-radius: 10px;
+        color: white;
+
+        border-width: 0;
+      }
+
+      .info-section {
+        margin: 18rem 0;
+        padding: 0 8rem 0 10rem;
+      }
+
+      .info-section-content {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 2px solid var(--info-section-border-color);
+        border-radius: 10px;
+      }
+
+      .info-section-content-item {
+        width: 238px;
+        padding: 18px 0 18px 0;
+
+        & img {
+          position: relative;
+          top: 6px;
+          margin-right: 1px;
+          height: 24px;
+          width: 24px;
+          object-fit: contain;
+        }
+      }
+
+      .promotion-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: -8rem;
+      }
+
+      .promotion-content-item {
+        min-width: 248px;
+        max-width: 497px;
+        margin: 1rem;
+        background-color: var(--promotion-background);
+        border-radius: 10px;
+        padding: 12px;
+
+        & h1,
+        p,
+        div {
+          margin: 2rem auto;
+        }
+      }
+
+      .read-more-btn {
+        width: 128px;
+        height: 40px;
+        background-color: var(--button-background-color);
+        border-radius: 8px;
+        border-width: 0;
+      }
+
+      .review-section {
+        margin-top: 3rem;
+      }
+
+      .testinomials {
+        text-align: center;
+
+        & h5,
+        h1 {
+          padding: 0 0 1rem 0;
+        }
+      }
+
+      #cone-one,
+      #cone-two {
+        width: 0;
+        height: 0;
+        border-left: 35px solid transparent;
+        border-right: 35px solid transparent;
+        border-top: 50px solid;
+        border-radius: 50%;
+        rotate: -45deg;
+      }
+
+      #cone-one {
+        translate: -74px 42px;
+        border-top-color: var(--cone-one-color);
+      }
+      #cone-two {
+        translate: -44px 20px;
+        border-top-color: var(--cone-two-color);
+      }
+
+      .carousel-testinomials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin: 8px;
+        flex-wrap: wrap;
+      }
+
+      .carousel-section {
+        width: 369px;
+      }
+      .carousel-container {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        margin: 0 auto;
+        height: 100%;
+        background-color: var(--carousel-background-color);
+      }
+
+      .carousel {
+        display: flex;
+      }
+
+      .slide {
+        flex: 0 0 auto;
+        width: 100%;
+        transition: transform 0.5s ease;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .prev {
+        left: 0;
+        width: 24px;
+      }
+
+      .next {
+        right: 0;
+        width: 24px;
+      }
+
+      .review {
+        width: 320px;
+        margin-top: 84px;
+        padding-left: 32px;
+      }
+
+      .review h3 {
+        margin-top: 36px;
+      }
+
+      #star {
+        display: flex;
+        margin: 0 24px 24px 0;
+        gap: 1rem;
+      }
+
+      #star-six {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid var(--review-color);
+        position: relative;
+      }
+      #star-six:after {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid var(--review-color);
+        position: absolute;
+        content: "";
+        top: 10px;
+        left: -15px;
+      }
+
+      .features:hover {
+        transform: translateY(-30px);
+      }
+
+      @media screen and (min-width: 120px) and (max-width: 560px) {
+        .carousel-section {
+          width: 230px;
+        }
+        .header-container {
+          padding: 0 8px 0 8px;
+          margin-top: 0 0 0 0;
+        }
+
+        .info-section {
+          padding-left: 3px;
+          padding-right: 3px;
+        }
+
+        .info-section-content {
+          border-width: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="body">
+      <!---Welcome  Section--->
+      <div class="header-container">
+        <div class="header-content container" id="chevron">
+          <div class="frame">
+            <div class="childframe">
+              <img
+                src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/hai.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vaGFpLnBuZyIsImlhdCI6MTcwODc1ODA1NiwiZXhwIjoxNzA5MzYyODU2fQ.qv2MqRAZJQPlzFEn-4_Muxh9E4KTas7tOQipEiL8u6k&t=2024-02-24T07%3A00%3A56.449Z"
+                alt="PTS"
+              />
+              <div class="main">
+                <h1>Welcome to PTS!</h1>
+                <p>
+                  End-to end freelancing and financial management in a single
+                  solution
+                  <br />
+                  Meet the right platform to help realize
+                </p>
+                <button class="get-started-button">Get Started</button>
+              </div>
+            </div>
+          </div>
+
+          <section class="content-section">
+            <div class="content">
+              <h1>We Help your career grow faster</h1>
+              <p>
+                Why kept very ever home mrs. Considered sympathize ten
+                uncommonly occasional assistance sufficient.
+              </p>
+            </div>
+          </section>
+          <!--Features of PTS Section-->
+          <section class="features-section">
+            <div class="frames">
+              <div class="features frameone">
+                <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Group.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vR3JvdXAucG5nIiwiaWF0IjoxNzA4ODU1MDQxLCJleHAiOjE3MDk0NTk4NDF9.41nwQTK_5DoaMgZZYttHlldOG80LsnOyMTkqzlb98Ys&t=2024-02-25T09%3A57%3A21.685Z" alt="" />
+                <h2>Offending belonging</h2>
+                <p>
+                  Letter of become he tended active enable to vicinity relation
+                  sensible sociable suprise screenned no up as
+                </p>
+                <h4>Read more<span class="arrow">&#8594;</span></h4>
+              </div>
+              <div class="features frametwo">
+                <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Trophy.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vVHJvcGh5LnBuZyIsImlhdCI6MTcwODg1NTAyMywiZXhwIjoxNzA5NDU5ODIzfQ.6emm2GXVb-uPtIy2hKmFxXsYFnq-G5rHFDSv96LlR-A&t=2024-02-25T09%3A57%3A03.910Z" alt="" />
+                <h2>Promotion & provision</h2>
+                <p>
+                  Lead ask possible mistress relation elegance eat likewise
+                  debating. By message or am nothing amongst chiefly address
+                </p>
+                <h4>Read more<span class="arrow">&#8594;</span></h4>
+              </div>
+              <div class="features framethree">
+                <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Vector.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vVmVjdG9yLnBuZyIsImlhdCI6MTcwODg1NTAwNCwiZXhwIjoxNzA5NDU5ODA0fQ.Du_F6TlTFNrYav7xA_0fWgP7bvMHjlGHxForB788ccg&t=2024-02-25T09%3A56%3A45.092Z" alt="" />
+                <h2>Blessing Application</h2>
+                <p>
+                  Ham windows sixteen who inquiry fortune demands is be upon
+                  sang found must shew. really boy country she unable her sister
+                </p>
+                <h4>Read more<span class="arrow">&#8594;</span></h4>
+              </div>
+            </div>
+            <div class="more-about-btn-container">
+              <button class="more-about-platform">More About Platform</button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="info-section">
+        <div class="info-section-content">
+          <p
+            class="info-section-content-item"
+            style="font-size: 16px; font-weight: 600"
+          >
+            Among leave law built now
+          </p>
+          <p class="info-section-content-item">
+            <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Idea.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vSWRlYS5wbmciLCJpYXQiOjE3MDg4NTQ4NzgsImV4cCI6MTcwOTQ1OTY3OH0.-ju9xd2Ox3Rc0Qz-LkJWjfTcNqgZoZ9VQN8xEwQzvZ4&t=2024-02-25T09%3A54%3A39.316Z" alt="" />Village did remov enjoyed
+          </p>
+          <p class="info-section-content-item">
+            <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Idea.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vSWRlYS5wbmciLCJpYXQiOjE3MDg4NTQ4NzgsImV4cCI6MTcwOTQ1OTY3OH0.-ju9xd2Ox3Rc0Qz-LkJWjfTcNqgZoZ9VQN8xEwQzvZ4&t=2024-02-25T09%3A54%3A39.316Z" alt="" />Nay likely length sooner
+          </p>
+          <p class="info-section-content-item">
+            <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/Idea.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vSWRlYS5wbmciLCJpYXQiOjE3MDg4NTQ4NzgsImV4cCI6MTcwOTQ1OTY3OH0.-ju9xd2Ox3Rc0Qz-LkJWjfTcNqgZoZ9VQN8xEwQzvZ4&t=2024-02-25T09%3A54%3A39.316Z" alt="" />Expense windows adopted
+          </p>
+        </div>
+      </section>
+      <!--Promtion  Section-->
+      <section class="promotion-section">
+        <div class="promotion-content">
+          <div class="promotion-content-item">
+            <h1>Offend belog promote provision</h1>
+            <p>
+              wise busy past both park when ye no. Nay likely her length sooner
+              thrown sex lively income
+            </p>
+            <div class="promotion-buttons-container">
+              <button class="read-more-btn">Read More</button>
+            </div>
+          </div>
+          <div class="promotion-content-item">
+            <h1>Offend belog promote provision</h1>
+            <p>
+              wise busy past both park when ye no. Nay likely her length sooner
+              thrown sex lively income
+            </p>
+            <div class="promotion-buttons-container">
+              <button class="read-more-btn">Read More</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Reviews of  clients -->
+      <section class="review-section">
+        <div>
+          <div class="testinomials">
+            <h5>TESTINOMIALS</h5>
+            <h1>Check what our clients are saying</h1>
+          </div>
+          <div class="carousel-testinomials">
+            <div class="carousel-section">
+              <div id="cone-one"></div>
+              <div id="cone-two"></div>
+              <div class="carousel-container">
+                <div class="carousel">
+                  <div class="slide">
+                    <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/OIP%201%20(1).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vT0lQIDEgKDEpLnBuZyIsImlhdCI6MTcwODg2NzkzOCwiZXhwIjoxNzA5NDcyNzM4fQ.PWUC40iEu8dqml5uymXhB2LwnSqijRnChGb8vaEJ3fU&t=2024-02-25T13%3A32%3A19.333Z" alt="" />
+                  </div>
+                  <div class="slide">
+                    <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/OIP%201%20(1).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vT0lQIDEgKDEpLnBuZyIsImlhdCI6MTcwODg2NzkzOCwiZXhwIjoxNzA5NDcyNzM4fQ.PWUC40iEu8dqml5uymXhB2LwnSqijRnChGb8vaEJ3fU&t=2024-02-25T13%3A32%3A19.333Z" alt="" />
+                  </div>
+                  <div class="slide">
+                    <img src="https://oigpeighlkogmagsftrt.supabase.co/storage/v1/object/sign/own/OIP%201%20(1).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJvd24vT0lQIDEgKDEpLnBuZyIsImlhdCI6MTcwODg2NzkzOCwiZXhwIjoxNzA5NDcyNzM4fQ.PWUC40iEu8dqml5uymXhB2LwnSqijRnChGb8vaEJ3fU&t=2024-02-25T13%3A32%3A19.333Z" alt="" />
+                    <div id="cone-three"></div>
+                  </div>
+                </div>
+                <button class="prev" onclick="prevSlide()">❮</button>
+                <button class="next" onclick="nextSlide()">❯</button>
+              </div>
+              <div id="cone-three"></div>
+            </div>
+            <div class="review">
+              <div id="star">
+                <div id="star-six"></div>
+                <div id="star-six"></div>
+                <div id="star-six"></div>
+                <div id="star-six"></div>
+                <div id="star-six"></div>
+              </div>
+              <p style="font-weight: bold">
+                Is be upon sang found must shew .really boy law country she
+                unable her sister Feet you off its like a like six. Among build
+                law leave now.
+              </p>
+              <h3>
+                Jenny<br />
+                <span style="color: #8594">CEO FYZ Inc</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      let currentIndex = 0;
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlidePosition();
+        }
+      }
+
+      function nextSlide() {
+        const totalSlides = document.querySelectorAll(".slide").length;
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateSlidePosition();
+        }
+      }
+
+      function updateSlidePosition() {
+        const carousel = document.querySelector(".carousel");
+        const slideWidth = document.querySelector(".slide").offsetWidth;
+        carousel.style.transform = `translateX(${
+          -currentIndex * slideWidth
+        }px)`;
+      }
+    </script>
+  </body>
+</html>
